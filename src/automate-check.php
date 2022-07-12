@@ -1,21 +1,21 @@
 <?php
 $ayuda="automate-check
-Busca repositorios con cambios
-Modo de uso:
--r --ruta               ruta a un git
--c --commit             un commit Id
--b --branch             la branch donde se ha hecho el commit
--d --directorios        ruta a archivo con lista de directorios locales en cada linea 
+Searches for repositories with changes
+Usage:
+-r --ruta               path to a git
+-c --commit             a commit Id
+-b --branch             the branch where the commit was made
+-d --directories        path to file with list of local directories on each line
 ";
 
 $argumentos = getopt("r:c:b:d:", array(
     "ruta:",
     "commit:",
     "branch:",
-    "directorios:"
+    "directories:"
 ));
-// Las opciones deben estar establecidas
-// Si no, salimos e indicamos el modo de uso
+
+//If the options are not set, we exit and indicate the usage mode.
 if (
     !(isset($argumentos["r"]) || isset($argumentos["ruta"]))
     ||
@@ -23,20 +23,20 @@ if (
     ||
     !(isset($argumentos["b"]) || isset($argumentos["branch"]))
     ||
-    !(isset($argumentos["d"]) || isset($argumentos["directorios"]))
+    !(isset($argumentos["d"]) || isset($argumentos["directories"]))
 ) {
     exit($ayuda);
 }
 
-// Hasta aquí todas las opciones están bien establecidas
+//All options are well established until here
 $ruta = isset($argumentos["r"]) ? $argumentos["r"] : $argumentos["ruta"];
 $commit = isset($argumentos["c"]) ? $argumentos["c"] : $argumentos["commit"];
 $branch = isset($argumentos["b"]) ? $argumentos["b"] : $argumentos["branch"];
-$directorios = isset($argumentos["d"]) ? $argumentos["d"] : $argumentos["directorios"];
+$directories = isset($argumentos["d"]) ? $argumentos["d"] : $argumentos["directories"];
 echo "automate-check" . PHP_EOL;
-echo "Buscando repositorios con cambios." . PHP_EOL;
+echo "Searches for repositories with changes." . PHP_EOL;
 echo "ruta: $ruta" . PHP_EOL;
 echo "commit: $commit" . PHP_EOL;
 echo "branch: $branch" . PHP_EOL;
-echo "directorios: $directorios" . PHP_EOL;
+echo "directories: $directories" . PHP_EOL;
 

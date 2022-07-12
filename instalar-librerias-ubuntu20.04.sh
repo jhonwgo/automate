@@ -4,6 +4,9 @@
 sudo apt update
 sudo apt -y install php
 sudo apt -y install php-cli unzip
+sudo apt -y install php-xml
+sudo apt -y install php-mbstring
+sudo apt -y install php-curl
 php -v
 
 #instalacion composer
