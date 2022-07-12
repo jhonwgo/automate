@@ -1,0 +1,19 @@
+{
+    "name": "jhongo/automate",
+    "description": "un sistema de CI/CD",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Jhongo\\Automate\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Jhon Guerrero",
+            "email": "jhon.guerrero.o@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
