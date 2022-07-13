@@ -1,9 +1,6 @@
 <?php
 
-require_once('classes/DependenciesTree.php');
-require_once('classes/Repository.php');
-require_once('classes/Dependency.php');
-require_once('Composerfiles.php');
+require_once('Automate.php');
 
 $ayuda="automate-check
 Searches for repositories with changes
@@ -50,32 +47,8 @@ echo "commit: $commit" . PHP_EOL;
 echo "branch: $branch" . PHP_EOL;
 echo "directories file path: $directoriesFilePath" . PHP_EOL;
 
-//$repositories=generateComposer(); 
-$repositories = getComposerFilesContents($directoriesFilePath);
-
-$depsTree = new DependenciesTree();
-
-foreach($repositories as $key => $repo){
-    $repoName = isset($repo['name']) ? $repo['name'] : '';
-    //$repoVersion = isset($repo['version']) ? $repo['version'] : '';
-    $repoVersion = '';
-    $repository = new Repository($repoName, $repoVersion);
-
-    $deps = isset($repo['require']) ? $repo['require'] : array();
-    foreach($deps as $key => $dep){ 
-        $depName = $key;
-        $depVersion = $dep;
-        $dependency = new Dependency($depName, $depVersion);
-        $repository->addDependency($dependency);
-        
-    }
-    $depsTree->addRepository($repository);
-}
-
-$composerFilePath="{$repositoriePath}/composer.json";
-$repoChange = load_json_file($composerFilePath);
 echo "changes: " . PHP_EOL;
-print_r($depsTree->getAllDependencies($repoChange->name, ''));
+print_r(check($repositoriePath, $commit, $branch, $directoriesFilePath));
 
 
 

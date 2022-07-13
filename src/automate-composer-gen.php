@@ -1,5 +1,5 @@
 <?php
-require_once('Composerfiles.php');
+require_once('Automate.php');
 
 $ayuda="automate-composer-gen
 Generates repository files for testing.
@@ -34,8 +34,5 @@ echo "Generates repository files for testing." . PHP_EOL;
 echo "repositories-path: $repositoriesPath" . PHP_EOL;
 echo "directories-file-path: $directoriesFilePath" . PHP_EOL;
 
-$repositories = generateComposer();
-$repositories_file = saveComposer($repositories, $repositoriesPath);
-saveFile($directoriesFilePath, $repositories_file);
-
+composer_gen($repositoriesPath, $directoriesFilePath);
 echo "files created successfully." . PHP_EOL;
