@@ -123,12 +123,6 @@ CREATE TABLE RepositoryDependency (
     FOREIGN KEY (dependency) REFERENCES Dependency(id)
 );
 
-ALTER TABLE Dependency
-ADD CONSTRAINT name_unique UNIQUE (name);
-
-ALTER TABLE Repository
-ADD CONSTRAINT name_unique UNIQUE (name);
-
 
 # Project files
 
