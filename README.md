@@ -39,25 +39,45 @@ structure of repositories and dependencies created for tests with automate-compo
 
 ---------repo1003
 -----repo1001
+
 -repo2
+
 -----repo1002
+
 -----repo1003
+
 -repo3
+
 -----repo1
+
 ---------repo2
+
 -------------repo1002
+
 -------------repo1003
+
 ---------repo1001
+
 -----repo4
+
 ---------repo1003
+
 -----repo1004
+
 -repo4
+
 -----repo1003
+
 -repo5
+
 -----repo1003
+
 -repo6
+
 -----repo5
+
 ---------repo1003
+
 Start tests with command: php vendor/bin/codecept run
 
 repo1 - Pipeline CI/CD = 2
@@ -69,6 +89,7 @@ repo3 - Pipeline CI/CD = 1
 repo4 - Pipeline CI/CD = 2
 
 repo5 - Pipeline CI/CD = 2
+
 repo6 - Pipeline CI/CD = 1
 
 
