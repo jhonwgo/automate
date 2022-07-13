@@ -31,6 +31,7 @@ The automate-check command allows you to validate changes in the commint from th
 
 # Testing
 structure of repositories and dependencies created for tests with automate-composer-gen.
+
 -repo1
 
 -----repo2
