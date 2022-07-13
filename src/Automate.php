@@ -37,6 +37,33 @@ function check($repositoriePath, $commit, $branch, $directoriesFilePath){
     return $depsTree->getAllDependencies($repoChange->name, '');
 }
 
+
+function checkName($composerName, $directoriesFilePath){
+
+    $repositories = getComposerFilesContents($directoriesFilePath);
+    $depsTree = new DependenciesTree();
+
+    foreach($repositories as $key => $repo){
+        $repoName = isset($repo['name']) ? $repo['name'] : '';
+        //$repoVersion = isset($repo['version']) ? $repo['version'] : '';
+        $repoVersion = '';
+        $repository = new Repository($repoName, $repoVersion);
+
+        $deps = isset($repo['require']) ? $repo['require'] : array();
+        foreach($deps as $key => $dep){ 
+            $depName = $key;
+            $depVersion = $dep;
+            $dependency = new Dependency($depName, $depVersion);
+            $repository->addDependency($dependency);
+            
+        }
+        $depsTree->addRepository($repository);
+    }    
+
+    echo "changes: " . PHP_EOL;
+    return $depsTree->getAllDependencies($composerName, '');
+}
+
 function composer_gen($repositoriesPath, $directoriesFilePath){
     $repositories = generateComposer();
     $repositories_file = saveComposer($repositories, $repositoriesPath);
