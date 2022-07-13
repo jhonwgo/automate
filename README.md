@@ -16,7 +16,7 @@ To use the project, it is necessary to follow the following steps:
 
 # How does it work?
 
-The project consists of two PHP files, one called automate-composer-gen.php and the other called automate-check.php.
+The project consists of three PHP files, one called automate-composer-gen.php, automate-check.php and the other called automate-check-name.php.
 
 The automate-composer-gen.php file is responsible for generating a set of test files for the project.
 
@@ -26,7 +26,7 @@ The automate-check-name.php file use composer name to validate for validating ch
 
 # Commands
 
-The project has two commands, called automate-composer-gen and automate-check.
+The project has three commands, called automate-composer-gen, automate-check and automate-check-name.
 
 The automate-composer-gen command allows you to generate a set of test files for the project. This command receives two arguments, repositories-path and directories-file-path. The repositories-path argument indicates the path of the folder where the generated tests must be saved and directories-file-path indicates the path of the file where the paths of the generated tests must be saved.
 
