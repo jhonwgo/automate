@@ -32,7 +32,13 @@ class DependenciesTree
         $stack = array();
         # Then, the tree is looped through to find the repository and version that were passed in.
         foreach($this->tree as $repo){
+            /*
             if($repo->getName() == $repositoryName && $repo->getVersion() == $version){
+                # If they are found, the repository is added to the stack.
+                $stack[] = $repo;
+            }
+            */
+            if($repo->getName() == $repositoryName){
                 # If they are found, the repository is added to the stack.
                 $stack[] = $repo;
             }
