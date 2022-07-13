@@ -38,6 +38,7 @@ structure of repositories and dependencies created for tests with automate-compo
 ---------repo1002
 
 ---------repo1003
+
 -----repo1001
 
 -repo2
