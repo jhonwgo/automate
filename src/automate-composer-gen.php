@@ -1,11 +1,93 @@
 <?php
 require_once('Automate.php');
 
-$ayuda="automate-composer-gen
-Generates repository files for testing.
+$help="
+automate-composer-gen
+
+This allows you to generate test data to validate the functions developed for Automate. It generates 6 folders with their respective composer files and also starts git and creates commits and tags.
+
 Usage:
--r --repositories-path  a folder path where the generated test repositories will be saved
--d --directories-file-path saves the paths of the generated repositories in a file, this file is required to run automate-check
+
+-r --repositories-path      a folder path where the generated test repositories will be saved
+-d --directories-file-path  saves the paths of the generated repositories in a file, this file is required to run automate-check
+
+This is the structure of test repositories generated.
+
+-repo1
+-----ver:1.0
+---------repo2:1.0
+---------repo1001:1.0
+-----ver:2.0
+---------repo2:2.0
+---------repo1001:1.0
+
+-repo2
+-----ver:1.0
+---------repo1002:1.0
+---------repo1003:1.0
+-----ver:2.0
+---------repo1002:1.0
+---------repo1003:1.0
+---------repo6:1.0
+
+-repo3
+-----ver:1.0
+---------repo1:1.0
+---------repo4:1.0
+---------repo1004:1.0
+
+-repo4
+-----ver:1.0
+---------repo1003:1.0
+
+-repo5
+-----ver:1.0
+---------repo1003:1.0
+
+-repo6
+-----ver:1.0
+---------repo5:1.0
+-----ver:2.0
+---------repo5:1.0
+---------repo3:1.0
+
+These are the dependencies affected by a change in a repository.
+
+-repo1:1.0
+-----repo3:1.0
+-----repo6:2.0
+
+-repo1:2.0
+-----0
+
+-repo2:1.0
+-----repo1:1.0
+---------repo3:1.0
+-------------repo6:2.0
+
+-repo2:2.0
+-----repo1:2.0
+
+-repo3:1.0
+-----repo6:2.0
+
+-repo4:1.0
+-----repo3:1.0
+---------repo6:2.0
+
+-repo5:1.0
+-----repo6:2.0
+-----repo6:1.0
+---------repo2:2.0
+-------------repo1:2.0
+
+-repo6:1.0
+-----repo2:2.0
+---------repo1:2.0
+
+-repo6:2.0
+-----0
+
 ";
 
 $argumentos = getopt("r:d:", array(
@@ -19,7 +101,7 @@ if (
     ||
     !(isset($argumentos["d"]) || isset($argumentos["directories-file-path"]))
 ) {
-    exit($ayuda);
+    exit($help);
 }
 
 //All options are well established until here

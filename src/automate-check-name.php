@@ -2,11 +2,16 @@
 
 require_once('Automate.php');
 
-$ayuda="automate-check-name
-Searches for repositories with changes
+$help="
+automate-check-name
+
+This function is focused on a CI / CD system, this function allows you to know through a composer name which other composer.json include it both directly and indirectly.
+
 Usage:
+
 -n --name                   composer name
 -d --directories-file-path  path to file with list of local directories on each line
+
 ";
 
 $argumentos = getopt("n:d:", array(
@@ -20,7 +25,7 @@ if (
     ||
     !(isset($argumentos["d"]) || isset($argumentos["directories-file-path"]))
 ) {
-    exit($ayuda);
+    exit($help);
 }
 
 //All options are well established until here

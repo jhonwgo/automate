@@ -2,13 +2,18 @@
 
 require_once('Automate.php');
 
-$ayuda="automate-check
-Searches for repositories with changes
+$help="
+
+automate-check
+
+This function is focused on a CI/CD system, it allows you to know which repositories have been affected by a commit in any of the local repositories.
+
 Usage:
 -r --repositorie-path       path to a git folder
 -c --commit                 a commit Id
 -b --branch                 the branch where the commit was made
 -d --directories-file-path  path to file with list of local directories on each line
+
 ";
 
 $argumentos = getopt("r:c:b:d:", array(
@@ -28,7 +33,7 @@ if (
     ||
     !(isset($argumentos["d"]) || isset($argumentos["directories-file-path"]))
 ) {
-    exit($ayuda);
+    exit($help);
 }
 
 //All options are well established until here

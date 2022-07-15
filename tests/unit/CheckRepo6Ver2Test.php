@@ -4,7 +4,7 @@ require __DIR__ . '/vendor/autoload.php';
 
 
 
-class CheckRepo6Ver1Test extends \Codeception\Test\Unit
+class CheckRepo6Ver2Test extends \Codeception\Test\Unit
 {
     /**
      * @var \UnitTester
@@ -32,6 +32,6 @@ class CheckRepo6Ver1Test extends \Codeception\Test\Unit
     public function testSomeFeature()
     {
         $total = count(check($this->repository, $this->commitId, "123", $this->directoriesFilePath));        
-        $this->assertEquals($total, 2); //has 2 changes
+        $this->assertEquals($total, 0); //has 0 changes
     }
 }
