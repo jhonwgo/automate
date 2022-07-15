@@ -24,6 +24,7 @@ class DependenciesTree
         $this->tree[] = $repository;
     }
 
+
     public function getAllDependencies($repositoryName, $version){
         # This function returns a list of all dependencies for a given repository and version.
         # The function takes two parameters: the name of the repository and the version number.
@@ -32,32 +33,73 @@ class DependenciesTree
         $stack = array();
         # Then, the tree is looped through to find the repository and version that were passed in.
         foreach($this->tree as $repo){
-            /*
             if($repo->getName() == $repositoryName && $repo->getVersion() == $version){
                 # If they are found, the repository is added to the stack.
                 $stack[] = $repo;
-            }
-            */
-            if($repo->getName() == $repositoryName){
-                # If they are found, the repository is added to the stack.
-                $stack[] = $repo;
+                break;
             }
         }
+        $first = false;
         # Next, the stack is looped through.
         while(!empty($stack)){
             $repo = array_pop($stack);
-            $list[] = $repo->getName();
-            foreach($this->tree as $subrepo){
+
+            if($first == true){
+                $list[] = "{$repo->getName()}:{$repo->getVersion()}";
+            }            
+            $first = true;
+            
+            foreach($this->tree as $subrepo){              
+                
                 # For each repository in the stack, its dependencies are looped through.
                 foreach($subrepo->getDependencies() as $subsubrepo){
                     # If any of those dependencies match the repository being processed, the dependency is added to the stack.
-                    if($subsubrepo->getName() == $repo->getName()){
+                    if($subsubrepo->getName() == $repo->getName() && $subsubrepo->getVersion()  == $repo->getVersion()){
                         $stack[] = $subrepo;
-                    }
+                    }                
                 }
             }
         }
         # Finally, the list is returned with any duplicate entries removed.
         return array_unique($list);
     }
+
+    public function getAllDependenciesName($repositoryName){
+        $list = array();
+        $stack = array();
+
+        foreach($this->tree as $repo){
+            if($repo->getName() == $repositoryName){
+                # If they are found, the repository is added to the stack.
+                $stack[] = $repo;
+            }
+        }
+        $first = false;
+        # Next, the stack is looped through.
+        while(!empty($stack)){
+            $repo = array_pop($stack);
+
+            if($first == true){
+                $key = "{$repo->getName()}:{$repo->getVersion()}";
+                if (in_array($key, $list)) {
+                    continue;
+                }
+                $list[] = $key;
+            }            
+            $first = true;
+            
+            foreach($this->tree as $subrepo){      
+                # For each repository in the stack, its dependencies are looped through.
+                foreach($subrepo->getDependencies() as $subsubrepo){
+                    # If any of those dependencies match the repository being processed, the dependency is added to the stack.
+                    if($subsubrepo->getName() == $repo->getName()){
+                        $stack[] = $subrepo;
+                    }                
+                }
+            }
+        }
+        # Finally, the list is returned with any duplicate entries removed.
+        return $list;
+    }
+
 }

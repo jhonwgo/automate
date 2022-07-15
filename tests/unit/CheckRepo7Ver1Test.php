@@ -4,7 +4,7 @@ require __DIR__ . '/vendor/autoload.php';
 
 
 
-class CheckRepo7Test extends \Codeception\Test\Unit
+class CheckRepo7Ver1Test extends \Codeception\Test\Unit
 {
     /**
      * @var \UnitTester
@@ -12,10 +12,15 @@ class CheckRepo7Test extends \Codeception\Test\Unit
     protected $tester;
     private $repositoriesPath = "/tmp/";
     private $directoriesFilePath = "/tmp/repolist.txt";
+    private $repository = "/tmp/repo7";
+    private $version = "1.0";
+    private $commitId = "";    
+    
     
     protected function _before()
     {
         composer_gen($this->repositoriesPath, $this->directoriesFilePath);
+        $this->commitId = getCommitFromTag($this->repository, $this->version);
     }
 
     protected function _after()
@@ -26,8 +31,7 @@ class CheckRepo7Test extends \Codeception\Test\Unit
     // tests
     public function testSomeFeature()
     {
-        //check /tmp/repo7
-        $total = count(check("/tmp/repo7/", "123", "123", $this->directoriesFilePath));        
+        $total = count(check($this->repository, $this->commitId, "123", $this->directoriesFilePath));        
         $this->assertEquals($total, 0); //has 0 changes
     }
 }

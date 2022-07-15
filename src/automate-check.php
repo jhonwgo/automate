@@ -46,8 +46,6 @@ echo "repositorie path: $repositoriePath" . PHP_EOL;
 echo "commit: $commit" . PHP_EOL;
 echo "branch: $branch" . PHP_EOL;
 echo "directories file path: $directoriesFilePath" . PHP_EOL;
-
-echo "changes: " . PHP_EOL;
 print_r(check($repositoriePath, $commit, $branch, $directoriesFilePath));
 
 

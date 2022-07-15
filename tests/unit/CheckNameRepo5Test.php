@@ -4,7 +4,7 @@ require __DIR__ . '/vendor/autoload.php';
 
 
 
-class CheckRepoName5Test extends \Codeception\Test\Unit
+class CheckNameRepo4Test extends \Codeception\Test\Unit
 {
     /**
      * @var \UnitTester
@@ -12,6 +12,8 @@ class CheckRepoName5Test extends \Codeception\Test\Unit
     protected $tester;
     private $repositoriesPath = "/tmp/";
     private $directoriesFilePath = "/tmp/repolist.txt";
+    private $repository = "repo5";
+    
     
     protected function _before()
     {
@@ -26,8 +28,7 @@ class CheckRepoName5Test extends \Codeception\Test\Unit
     // tests
     public function testSomeFeature()
     {
-        //check repo5
-        $total = count(checkName("repo5", $this->directoriesFilePath));        
-        $this->assertEquals($total, 2); //has 2 changes
+        $total = count(checkName($this->repository, $this->directoriesFilePath));        
+        $this->assertEquals($total, 6); //has 6 changes
     }
 }

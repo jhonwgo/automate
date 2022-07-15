@@ -1,6 +1,10 @@
 <?php
 
-class ComposerGenTest extends \Codeception\Test\Unit
+require __DIR__ . '/vendor/autoload.php';
+
+
+
+class CheckNameRepo3Test extends \Codeception\Test\Unit
 {
     /**
      * @var \UnitTester
@@ -8,10 +12,12 @@ class ComposerGenTest extends \Codeception\Test\Unit
     protected $tester;
     private $repositoriesPath = "/tmp/";
     private $directoriesFilePath = "/tmp/repolist.txt";
+    private $repository = "repo3";
+    
     
     protected function _before()
     {
-        composer_del($this->repositoriesPath, $this->directoriesFilePath);
+        composer_gen($this->repositoriesPath, $this->directoriesFilePath);
     }
 
     protected function _after()
@@ -22,7 +28,7 @@ class ComposerGenTest extends \Codeception\Test\Unit
     // tests
     public function testSomeFeature()
     {
-        composer_gen($this->repositoriesPath, $this->directoriesFilePath);
-        $this->assertEquals(composer_check($this->directoriesFilePath), 9); //generates 9 test data
+        $total = count(checkName($this->repository, $this->directoriesFilePath));        
+        $this->assertEquals($total, 5); //has 5 changes
     }
 }
