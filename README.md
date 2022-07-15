@@ -207,12 +207,14 @@ These are the dependencies affected by a change in a repository.
 
 
 # DATA BASE
+```
 CREATE TABLE `repos` (
   `name` varchar(50) NOT NULL,
   `version` varchar(50) NOT NULL,
   PRIMARY KEY (`name`,`version`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
+```
+```
 CREATE TABLE `deps` (
   `repo_name` varchar(50) NOT NULL,
   `repo_version` varchar(50) NOT NULL,
@@ -222,7 +224,7 @@ CREATE TABLE `deps` (
   KEY `fk_deps_repos1_idx` (`repo_name`,`repo_version`),
   CONSTRAINT `fk_deps_repos1` FOREIGN KEY (`repo_name`, `repo_version`) REFERENCES `repos` (`name`, `version`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
+```
 
 # Project files
 
