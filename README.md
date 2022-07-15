@@ -74,79 +74,135 @@ php vendor/bin/codecept run
 This is the structure of test repositories generated.
 
 -repo1
+
 -----ver:1.0
+
 ---------repo2:1.0
+
 ---------repo1001:1.0
+
 -----ver:2.0
+
 ---------repo2:2.0
+
 ---------repo1001:1.0
+
 
 -repo2
+
 -----ver:1.0
+
 ---------repo1002:1.0
+
 ---------repo1003:1.0
+
 -----ver:2.0
+
 ---------repo1002:1.0
+
 ---------repo1003:1.0
+
 ---------repo6:1.0
 
+
 -repo3
+
 -----ver:1.0
+
 ---------repo1:1.0
+
 ---------repo4:1.0
+
 ---------repo1004:1.0
 
+
 -repo4
+
 -----ver:1.0
+
 ---------repo1003:1.0
+
 
 -repo5
+
 -----ver:1.0
+
 ---------repo1003:1.0
 
+
 -repo6
+
 -----ver:1.0
+
 ---------repo5:1.0
+
 -----ver:2.0
+
 ---------repo5:1.0
+
 ---------repo3:1.0
+
 
 These are the dependencies affected by a change in a repository.
 
 -repo1:1.0
+
 -----repo3:1.0
+
 -----repo6:2.0
+
 
 -repo1:2.0
 -----0
 
+
 -repo2:1.0
+
 -----repo1:1.0
+
 ---------repo3:1.0
+
 -------------repo6:2.0
 
+
 -repo2:2.0
+
 -----repo1:2.0
 
+
 -repo3:1.0
+
 -----repo6:2.0
+
 
 -repo4:1.0
+
 -----repo3:1.0
+
 ---------repo6:2.0
 
+
 -repo5:1.0
+
 -----repo6:2.0
+
 -----repo6:1.0
+
 ---------repo2:2.0
+
 -------------repo1:2.0
 
+
 -repo6:1.0
+
 -----repo2:2.0
+
 ---------repo1:2.0
+
 
 -repo6:2.0
 -----0
+
 
 # DATA BASE
 CREATE TABLE `repos` (
