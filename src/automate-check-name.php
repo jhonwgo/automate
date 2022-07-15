@@ -32,7 +32,7 @@ if (
 $name = isset($argumentos["n"]) ? $argumentos["n"] : $argumentos["name"];
 $directoriesFilePath = isset($argumentos["d"]) ? $argumentos["d"] : $argumentos["directories-file-path"];
 echo "automate-check" . PHP_EOL;
-echo "Searches for repositories with changes." . PHP_EOL;
+echo "searches for repositories with changes." . PHP_EOL;
 echo "name: $name" . PHP_EOL;
 echo "directories file path: $directoriesFilePath" . PHP_EOL;
 print_r(checkName($name, $directoriesFilePath));

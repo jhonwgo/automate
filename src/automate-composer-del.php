@@ -34,9 +34,9 @@ if (substr($repositoriesPath, -1)!="/"){
 
 $directoriesFilePath = isset($argumentos["d"]) ? $argumentos["d"] : $argumentos["directories-file-path"];
 echo "automate-composer-del" . PHP_EOL;
-echo "Generates repository files for testing." . PHP_EOL;
+echo "delete repository files for testing." . PHP_EOL;
 echo "repositories-path: $repositoriesPath" . PHP_EOL;
 echo "directories-file-path: $directoriesFilePath" . PHP_EOL;
 
 composer_del($repositoriesPath, $directoriesFilePath);
-echo "files created successfully." . PHP_EOL;
+echo "files deleted successfully." . PHP_EOL;

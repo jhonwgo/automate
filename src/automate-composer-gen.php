@@ -112,7 +112,7 @@ if (substr($repositoriesPath, -1)!="/"){
 
 $directoriesFilePath = isset($argumentos["d"]) ? $argumentos["d"] : $argumentos["directories-file-path"];
 echo "automate-composer-gen" . PHP_EOL;
-echo "Generates repository files for testing." . PHP_EOL;
+echo "generates repository files for testing." . PHP_EOL;
 echo "repositories-path: $repositoriesPath" . PHP_EOL;
 echo "directories-file-path: $directoriesFilePath" . PHP_EOL;
 

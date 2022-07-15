@@ -46,7 +46,7 @@ $commit = isset($argumentos["c"]) ? $argumentos["c"] : $argumentos["commit"];
 $branch = isset($argumentos["b"]) ? $argumentos["b"] : $argumentos["branch"];
 $directoriesFilePath = isset($argumentos["d"]) ? $argumentos["d"] : $argumentos["directories-file-path"];
 echo "automate-check" . PHP_EOL;
-echo "Searches for repositories with changes." . PHP_EOL;
+echo "searches for repositories with changes." . PHP_EOL;
 echo "repositorie path: $repositoriePath" . PHP_EOL;
 echo "commit: $commit" . PHP_EOL;
 echo "branch: $branch" . PHP_EOL;
